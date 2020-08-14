@@ -27,6 +27,28 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 
 # Installing
+## git flow init :
+$ git flow init
+```BASH
+Which branch should be used for bringing forth production releases?
+   - master
+Branch name for production releases: [master] main #because we live in the 21st century
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/]
+Release branches? [release/] 
+Hotfix branches? [hotfix/]
+Support branches? [support/] 
+Version tag prefix? [] 
+```
+
+## First steps
+```BASH
+git push origin HEAD:master
+```
+
 # The models
 ```mermaid
 gitGraph:
