@@ -27,6 +27,46 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 
 # Installing
+## git flow init :
+$ git flow init
+```BASH
+Which branch should be used for bringing forth production releases?
+   - master
+Branch name for production releases: [master] main #because we live in the 21st century
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/]
+Release branches? [release/] 
+Hotfix branches? [hotfix/]
+Support branches? [support/] 
+Version tag prefix? [] 
+```
+
+### Installing Python
+We will folllow the [hypermodern Python guide](https://cjolowicz.github.io/posts/hypermodern-python-01-setup/)
+It starts by installing the right stuff :
+
+```BASH
+sudo apt update && sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
+libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+```
+
+We'll need to install the environnement :
+```BASH
+curl https://pyenv.run | bash
+```
+
+
+
+
+## First steps
+```BASH
+git push origin HEAD:master
+```
+
 # The models
 ```mermaid
 gitGraph:
