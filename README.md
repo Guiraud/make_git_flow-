@@ -14,8 +14,10 @@ It's a command line tool that ask you for several information intended to automa
 ## The Basic (dev, main)
 
 Two stages is the basic model. Pretty sufficient to test a concept or to make proof of concept. The main is usually on a live website. 
+```BASH
 git push [branch] dev
-git push [branch] master
+git push [branch] main
+```
 
 ## The Stage (dev, staging, main)
 
@@ -27,47 +29,18 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 
 # Installing
-## git flow init :
-$ git flow init
-```BASH
-Which branch should be used for bringing forth production releases?
-   - master
-Branch name for production releases: [master] main #because we live in the 21st century
-Branch name for "next release" development: [develop] 
-
-How to name your supporting branch prefixes?
-Feature branches? [feature/] 
-Bugfix branches? [bugfix/]
-Release branches? [release/] 
-Hotfix branches? [hotfix/]
-Support branches? [support/] 
-Version tag prefix? [] 
-```
-
-### Installing Python
-We will folllow the [hypermodern Python guide](https://cjolowicz.github.io/posts/hypermodern-python-01-setup/)
-It starts by installing the right stuff :
+## Renaming master to main
+Becaouse we live in the 21st Century, I'll follow this [blog post](http://www.kapwing.com/blog/how-to-rename-your-master-branch-to-main-in-git/) :
 
 ```BASH
-sudo apt update && sudo apt install -y make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
-libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+git branch -m master main
+git push --set-upstream main main
 ```
-
-We'll need to install the environnement :
-```BASH
-curl https://pyenv.run | bash
-```
+Don't forget to change the default branch on Github : 
+![Changing the master to main default Branch](http://i.imgur.com/BeLHq7w.png)
 
 
-
-
-## First steps
-```BASH
-git push origin HEAD:master
-```
-
-# The models
+## The models
 ```mermaid
 gitGraph:
 options
