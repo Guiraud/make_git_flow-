@@ -14,8 +14,10 @@ It's a command line tool that ask you for several information intended to automa
 ## The Basic (dev, main)
 
 Two stages is the basic model. Pretty sufficient to test a concept or to make proof of concept. The main is usually on a live website. 
+```BASH
 git push [branch] dev
-git push [branch] master
+git push [branch] main
+```
 
 ## The Stage (dev, staging, main)
 
@@ -27,6 +29,18 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 
 # Installing
+
+## Renaming master to main
+Because we live in the 21st Century, I'll follow this [blog post](http://www.kapwing.com/blog/how-to-rename-your-master-branch-to-main-in-git/) :
+
+```BASH
+git branch -m master main
+git push --set-upstream main main
+```
+Don't forget to change the default branch on Github : 
+![Changing the master to main default Branch](http://i.imgur.com/BeLHq7w.png)
+
+
 ## git flow init :
 $ git flow init
 ```BASH
