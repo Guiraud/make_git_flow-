@@ -29,8 +29,9 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 
 # Installing
+
 ## Renaming master to main
-Becaouse we live in the 21st Century, I'll follow this [blog post](http://www.kapwing.com/blog/how-to-rename-your-master-branch-to-main-in-git/) :
+Because we live in the 21st Century, I'll follow this [blog post](http://www.kapwing.com/blog/how-to-rename-your-master-branch-to-main-in-git/) :
 
 ```BASH
 git branch -m master main
@@ -40,7 +41,29 @@ Don't forget to change the default branch on Github :
 ![Changing the master to main default Branch](http://i.imgur.com/BeLHq7w.png)
 
 
-## The models
+## git flow init :
+$ git flow init
+```BASH
+Which branch should be used for bringing forth production releases?
+   - master
+Branch name for production releases: [master] main #because we live in the 21st century
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/]
+Release branches? [release/] 
+Hotfix branches? [hotfix/]
+Support branches? [support/] 
+Version tag prefix? [] 
+```
+
+## First steps
+```BASH
+git push origin HEAD:master
+```
+
+# The models
 ```mermaid
 gitGraph:
 options
