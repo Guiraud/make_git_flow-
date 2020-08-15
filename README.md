@@ -40,6 +40,49 @@ git push --set-upstream main main
 Don't forget to change the default branch on Github : 
 ![Changing the master to main default Branch](http://i.imgur.com/BeLHq7w.png)
 
+# Steps
+According to [this GitHub](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa)
+## On the production server :
+
+```BASH
+ssh user@server.com
+mkdir ~/deployed_web_site
+mkdir ~/project.git
+git init --bare ~/project.git
+cd ~/project.git
+chmod +x hooks/post-receive
+```
+
+You 'll have to adapt the content of post-receive according to [~/project.git/hooks/post-receive](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa#file-post-receive) :
+```BASH
+#!/bin/bash
+TARGET="/home/webuser/deployed_web_site"
+GIT_DIR="/home/webuser/project.git"
+BRANCH="main"
+
+while read oldrev newrev ref
+do
+	# only checking out the main (or whatever branch you would like to deploy)
+	if [ "$ref" = "refs/heads/$BRANCH" ];
+	then
+		echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
+		git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f $BRANCH
+	else
+		echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+	fi
+done
+```
+
+## Localy :
+```BASH
+git remote add production user@server.com:project.git
+```
+
+## Push to the production server :
+```
+git push production main
+```
+
 
 ## git flow init :
 $ git flow init
