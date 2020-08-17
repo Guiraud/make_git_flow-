@@ -103,8 +103,65 @@ Version tag prefix? []
 
 ## First steps
 ```BASH
-git push origin HEAD:master
+git push origin HEAD:main
 ```
+
+
+# Moving a production server
+## On the new Server
+On the new production server create the two folders : 
+
+```BASH
+ssh user@new_server.com
+mkdir ~/deployed_new_web_site
+mkdir ~/project.git
+git init --bare ~/project.git
+cd ~/project.git
+```
+Edit the new server post-receive file with the new information :
+
+```BASH
+#!/bin/bash
+TARGET="/home/webuser/deployed_new_web_site"
+GIT_DIR="/home/webuser/project.git"
+BRANCH="main"
+
+while read oldrev newrev ref
+do
+	# only checking out the main (or whatever branch you would like to deploy)
+	if [ "$ref" = "refs/heads/$BRANCH" ];
+	then
+		echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
+		git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f $BRANCH
+	else
+		echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+	fi
+done
+```
+Then make it executable :
+
+```BASH
+chmod +x hooks/post-receive
+```
+## In case the "deployed_new_web_site" is in '/var/www' : 
+```BASH
+sudo useradd -g www-data mguiraud
+sudo usermod -a -G www-data mguiraud
+sudo chgrp -R user:www-data /var/www/deployed_new_web_site
+ 
+```
+
+
+
+## On local or dev server :
+```
+git remote add new_server_production user@new_server.com:project.git
+```
+
+
+## How does it work for multiuser ? 
+In my view, It's not good practice to have multiple users updating the website. For the sake of the demonstration, here's how to do it :
+a predertimened user should be created. and all the actions 
 
 # The models
 ```mermaid
