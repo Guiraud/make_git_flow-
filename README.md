@@ -145,8 +145,8 @@ chmod +x hooks/post-receive
 ```
 ## In case the "deployed_new_web_site" is in '/var/www' : 
 ```BASH
-sudo useradd -g www-data mguiraud
-sudo usermod -a -G www-data mguiraud
+sudo useradd -g www-data user
+sudo usermod -a -G www-data user
 sudo chgrp -R user:www-data /var/www/deployed_new_web_site
  
 ```
@@ -161,7 +161,31 @@ git remote add new_server_production user@new_server.com:project.git
 
 ## How does it work for multiuser ? 
 In my view, It's not good practice to have multiple users updating the website. For the sake of the demonstration, here's how to do it :
-a predertimened user should be created. and all the actions 
+a predertimened user should be created. and all the ssh actions should be done thru this user : 
+
+```BASH
+sudo -s
+adduser new_user
+sudo usermod -a -G sudo user #should it be ?? nah
+```
+Than on your local station create an ssh connection : 
+```BASH
+ssh-copy-id -i ~/.ssh/id_<crypting_algorythm>.pub user@server.com
+```
+yout should have  :
+```BASH
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'user@<server.com>'"
+and check to make sure that only the key(s) you wanted were added.
+
+```
+I do an alias : 
+
+alias connect_mots='icz_mots@92.222.71.169'
+
+add it to ~/.bash_aliases
+
 
 # The models
 ```mermaid
