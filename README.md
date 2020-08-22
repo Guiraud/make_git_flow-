@@ -82,7 +82,13 @@ git remote add production user@server.com:project.git
 ```
 git push production main
 ```
-
+## if the deployed_site is not updated :
+It might be the rights of the /var/www/html if you choosed this folder. Then it might be usefull to set the rights according to the pupose :
+```BASH
+sudo useradd -g www-data user
+sudo usermod -a -G www-data user
+sudo chown -R user:www-data /var/www/html/deployed_site/
+```
 
 ## git flow init :
 $ git flow init
