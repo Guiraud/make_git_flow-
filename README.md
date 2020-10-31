@@ -172,6 +172,7 @@ a predertimened user should be created. and all the ssh actions should be done t
 ```BASH
 sudo -s
 adduser new_user
+ssh-keygen -b 4096
 sudo usermod -a -G sudo user #should it be ?? nah
 ```
 Than on your local station create an ssh connection : 
