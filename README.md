@@ -147,7 +147,7 @@ chmod +x hooks/post-receive
 ```BASH
 sudo useradd -g www-data user
 sudo usermod -a -G www-data user
-sudo chgrp -R user:www-data /var/www/deployed_new_web_site
+sudo chown -R user:www-data /var/www/deployed_new_web_site
  
 ```
 
