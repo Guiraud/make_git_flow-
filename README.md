@@ -50,6 +50,10 @@ mkdir ~/deployed_web_site
 mkdir ~/project.git
 git init --bare ~/project.git
 cd ~/project.git
+```
+
+
+```BASH
 chmod +x hooks/post-receive
 ```
 
@@ -161,7 +165,7 @@ git remote add new_server_production user@new_server.com:project.git
 
 ## How does it work for multiuser ? 
 In my view, It's not good practice to have multiple users updating the website. For the sake of the demonstration, here's how to do it :
-a predertimened user should be created. and all the actions 
+a predertimened user should be created. and all the actions be done thru this user. 
 
 # The models
 ```mermaid
